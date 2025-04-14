@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Structured HTML Page</title>
+  
+  <style>
+img {
+    border-radius: 10px;
+    transition: all 150ms ease-in-out;
+    width:200px;
+    height: auto;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <ul class="nav-list">
+      <li><a href="#list">List</a></li>
+      <li><a href="#image">Image</a></li>
+      <li><a href="#contacts">Contacts</a></li>
+      <li><a href="#form">Register</a></li>
+    </ul>
+  </nav>
+
+  <!-- Content -->
+  <div class="page-wrapper">
+    <div class="container" id="list">
+      <h2>Ordered List</h2>
+      <ol type="I">
+        <li>John Doe</li>
+        <li>Jane Smith</li>
+        <li>Michael Brown</li>
+        <li>Emily Davis</li>
+        <li>David Wilson</li>
+      </ol>
+    </div>
+
+    <div class="container" id="image">
+      <h2>Image from Pexels</h2>
+      <img id="pexels-image" src="https://images.pexels.com/photos/7470480/pexels-photo-7470480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="book-tea-pc" />
+    </div>
+
+    <div class="container" id="contacts">
+      <h2>Contacts</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Mobile</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John Doe</td>
+            <td>123 Main St, City</td>
+            <td>+1234567890</td>
+            <td>johndoe@example.com</td>
+          </tr>
+          <tr>
+            <td>Jane Smith</td>
+            <td>456 Oak St, Town</td>
+            <td>+0987654321</td>
+            <td>janesmith@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container" id="form">
+      <h2>Registration Form</h2>
+      <form id="registrationForm" action="#" method="POST">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="6"><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+          <option value="">Select Country</option>
+          <option value="usa">USA</option>
+          <option value="uk">UK</option>
+          <option value="canada">Canada</option>
+          <option value="australia">Australia</option>
+        </select><br><br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label><br><br>
+
+        <label>Interests:</label>
+        <input type="checkbox" id="coding" name="interests" value="coding">
+        <label for="coding">Coding</label>
+        <input type="checkbox" id="reading" name="interests" value="reading">
+        <label for="reading">Reading</label>
+        <input type="checkbox" id="traveling" name="interests" value="traveling">
+        <label for="traveling">Traveling</label><br><br>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("registrationForm");
+
+  
+  const pexelsImage = document.getElementById("pexels-image");
+  pexelsImage.addEventListener("mouseover", () => {
+    pexelsImage.style.transform = "scale(1.05)";
+  });
+  pexelsImage.addEventListener("mouseout", () => {
+    pexelsImage.style.transform = "scale(1)";
+  });
+
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault(); 
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const name = document.getElementById("name").value;
+
+    
+    if (name === "" || email === "" || password === "") {
+      alert("All fields are required!");
+      return;
+    }
+
+    
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!email.match(emailPattern)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters.");
+      return;
+    }
+
+    alert("Form successfully submitted!");
+    form.reset(); 
+  });
+});
+
+
+  </script>
+
+</body>
+</html>
